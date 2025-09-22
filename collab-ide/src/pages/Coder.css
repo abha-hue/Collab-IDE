@@ -1,0 +1,270 @@
+.coder-container {
+  min-height: 90vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #363636 100%);
+  color: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.coder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(45, 45, 45, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.coder-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-selector label {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.language-dropdown {
+  padding: 8px 15px;
+  background: rgba(58, 58, 58, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: rgba(74, 158, 255, 0.5);
+  box-shadow: 0 0 15px rgba(74, 158, 255, 0.2), inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  background: rgba(68, 68, 68, 0.8);
+}
+
+.code-editor-wrapper {
+  flex: 1;
+  display: flex;
+  background: rgba(32, 32, 32, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* CodeMirror container styling */
+.code-editor-wrapper .cm-editor {
+  background: transparent !important;
+  border-radius: 8px;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* CodeMirror focused state */
+.code-editor-wrapper .cm-editor.cm-focused {
+  outline: none !important;
+  border: 1px solid rgba(74, 158, 255, 0.4) !important;
+  box-shadow: 0 0 20px rgba(74, 158, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: rgba(40, 40, 40, 0.8) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+}
+
+/* CodeMirror content area */
+.code-editor-wrapper .cm-content {
+  background: transparent !important;
+  color: #f0f0f0 !important;
+  padding: 15px !important;
+  min-height: 400px !important;
+}
+
+/* CodeMirror line numbers */
+.code-editor-wrapper .cm-gutters {
+  background: rgba(45, 45, 45, 0.6) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #aaa !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.code-editor-wrapper .cm-lineNumbers .cm-gutterElement {
+  color: #aaa !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
+}
+
+/* Active line highlighting */
+.code-editor-wrapper .cm-activeLine {
+  background: rgba(74, 158, 255, 0.1) !important;
+}
+
+.code-editor-wrapper .cm-activeLineGutter {
+  background: rgba(74, 158, 255, 0.2) !important;
+  color: #4a9eff !important;
+}
+
+/* Selection styling */
+.code-editor-wrapper .cm-selectionBackground {
+  background: rgba(74, 158, 255, 0.3) !important;
+}
+
+/* Cursor styling */
+.code-editor-wrapper .cm-cursor {
+  border-left: 2px solid #4a9eff !important;
+}
+
+/* Scrollbar styling for CodeMirror */
+.code-editor-wrapper .cm-scroller::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.code-editor-wrapper .cm-scroller::-webkit-scrollbar-track {
+  background: rgba(32, 32, 32, 0.5);
+  border-radius: 4px;
+}
+
+.code-editor-wrapper .cm-scroller::-webkit-scrollbar-thumb {
+  background: rgba(74, 158, 255, 0.5);
+  border-radius: 4px;
+}
+
+.code-editor-wrapper .cm-scroller::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 158, 255, 0.7);
+}
+
+/* Syntax highlighting customization */
+.code-editor-wrapper .cm-editor .tok-keyword {
+  color: #ff79c6 !important;
+}
+
+.code-editor-wrapper .cm-editor .tok-string {
+  color: #f1fa8c !important;
+}
+
+.code-editor-wrapper .cm-editor .tok-comment {
+  color: #6272a4 !important;
+  font-style: italic;
+}
+
+.code-editor-wrapper .cm-editor .tok-number {
+  color: #bd93f9 !important;
+}
+
+.code-editor-wrapper .cm-editor .tok-operator {
+  color: #ff79c6 !important;
+}
+
+.code-editor-wrapper .cm-editor .tok-function {
+  color: #50fa7b !important;
+}
+
+.code-editor-wrapper .cm-editor .tok-variable {
+  color: #8be9fd !important;
+}
+
+/* Bracket matching */
+.code-editor-wrapper .cm-matchingBracket {
+  background: rgba(74, 158, 255, 0.3) !important;
+  border-radius: 3px;
+}
+
+/* Search highlight */
+.code-editor-wrapper .cm-searchMatch {
+  background: rgba(255, 215, 0, 0.3) !important;
+  border-radius: 3px;
+}
+
+/* CodeMirror placeholder */
+.code-editor-wrapper .cm-placeholder {
+  color: #aaa !important;
+  font-style: italic;
+}
+
+.editor-footer {
+  margin-top: 20px;
+  padding: 15px 20px;
+  background: rgba(45, 45, 45, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.editor-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.editor-stats span {
+  padding: 5px 15px;
+  background: rgba(74, 158, 255, 0.1);
+  border-radius: 6px;
+  border-left: 3px solid rgba(74, 158, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .coder-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .coder-title {
+    font-size: 1.5rem;
+  }
+  
+  .editor-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Make the editor take full width and be scrollable */
+.cm-editor {
+  height: 100%;        /* or min-height if you want it flexible */
+  width: 100%;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 14px;
+  overflow: hidden;
+  max-height: 400px;
+  min-width: 800px;       /* ensures scrolling instead of growing */
+  max-width: 1200px;       /* ensures scrolling instead of growing */
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+}
+
+/* The actual text area inside */
+.cm-scroller {
+  overflow: hidden;
+}
