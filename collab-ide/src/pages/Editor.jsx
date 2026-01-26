@@ -4,6 +4,9 @@ import './editor.css';
 import Coder from '../pages/Coder';
 import { io } from 'socket.io-client';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const Editor = () => {
     const navigate = useNavigate();
@@ -11,15 +14,12 @@ const Editor = () => {
     const location = useLocation();
     const username = location.state?.username || "Anonymous";
     const [clients, setClients] = useState([]);
-    const socketRef = useRef(null); // ✅ socket lives here
+    const socketRef = useRef(null);
 
     useEffect(() => {
-        // Create socket only once
-        socketRef.current = io("http://localhost:3000", {
+        socketRef.current = io(process.env.backend_url, {
             transports: ["websocket"],
         });
-
-        // Connect and join room
         socketRef.current.on("connect", () => {
             socketRef.current.emit("join-room", { roomid, name: username });
             setTimeout(() => {
@@ -27,7 +27,6 @@ const Editor = () => {
             }, 50);
         });
 
-        // Event handlers
         const handleClientsUpdate = (clients) => {
             setClients(clients);
         };
@@ -42,13 +41,11 @@ const Editor = () => {
             }
         };
 
-        // Listen for events
         socketRef.current.on("clients-update", handleClientsUpdate);
         socketRef.current.on("user-joined", handleUserJoined);
         socketRef.current.on("user-left", handleUserLeft);
 
         return () => {
-            // Cleanup
             socketRef.current.off("clients-update", handleClientsUpdate);
             socketRef.current.off("user-joined", handleUserJoined);
             socketRef.current.off("user-left", handleUserLeft);

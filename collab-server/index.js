@@ -2,18 +2,21 @@ import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-    methods: ["GET", "POST"]
+  origin: process.env.VITE_APP_URL,
+  credentials: true,
+  methods: ["GET", "POST"]
 }));
 
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // React dev server
+    origin: process.env.VITE_APP_URL, // React dev server
     methods: ["GET", "POST"]
   }
 });
@@ -73,7 +76,6 @@ io.on('connection', (socket) => {
       rooms[roomid].language = language;
 
       socket.to(roomid).emit("code-update", { code, language });
-      console.log(`Code updated in room ${roomid}`);
     } catch (err) {
       console.error("code-change error:", err.message);
     }

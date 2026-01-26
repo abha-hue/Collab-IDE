@@ -8,7 +8,7 @@ const Home = () => {
     const [id, setid] = useState('');
     const [username, setusername] = useState('');
     const navigate = useNavigate();
-        const createRoom = (e) => {
+    const createRoom = (e) => {
         e.preventDefault();
         const roomId = uuidv4();
         setid(roomId);
@@ -16,9 +16,9 @@ const Home = () => {
         // ✅ show toast here
         toast.success('Room created successfully!');
 
-        console.log(roomId);
+
     };
-    
+
     const join_room = () => {
         if (!id || !username) {
             toast.error('Please enter room id and username');
@@ -33,7 +33,7 @@ const Home = () => {
 
     return (
         <>
-  {/* ✅ always rendered */}
+            {/* ✅ always rendered */}
             <div className="home-container">
                 <div className="hero-section">
                     <h1 className="hero-title">Welcome to Collab-IDE</h1>

@@ -13,17 +13,16 @@ import { tags as t } from '@lezer/highlight';
 import { debounce } from 'lodash';
 
 const Coder = ({ socket, roomid }) => {
-  const [code, setCode] = useState('');          // ✅ no default message here
+  const [code, setCode] = useState('');
   const [language, setLanguage] = useState('javascript');
   const [isRemoteChange, setIsRemoteChange] = useState(false);
 
-  // Handle incoming updates
   useEffect(() => {
     if (!socket) return;
 
     const handleCodeUpdate = ({ code: newCode, language: newLanguage }) => {
       setIsRemoteChange(true);
-      setCode(newCode ?? "");   // ✅ trust server code
+      setCode(newCode ?? "");
       if (newLanguage && newLanguage !== language) {
         setLanguage(newLanguage);
       }
@@ -45,7 +44,6 @@ const Coder = ({ socket, roomid }) => {
     };
   }, [socket, language]);
 
-  // Emit code changes (debounced)
   const emitCodeChange = useCallback(
     debounce((newCode, newLanguage) => {
       if (socket && roomid && !isRemoteChange) {
@@ -78,7 +76,6 @@ const Coder = ({ socket, roomid }) => {
     }
   };
 
-  // Theme
   const customTheme = createTheme({
     theme: 'dark',
     settings: {
@@ -154,7 +151,7 @@ const Coder = ({ socket, roomid }) => {
           theme={customTheme}
           extensions={getLanguageExtension()}
           onChange={handleCodeChange}
-         
+
           basicSetup={{
             lineNumbers: true,
             foldGutter: true,
